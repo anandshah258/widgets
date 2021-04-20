@@ -4,7 +4,7 @@ This is a **React** application that includes four different widgets put togethe
 
 - **An Accordion widget** : An accordion is a graphical control element comprising of a vertically stacked list of items, such as labels. Each item can be 'expanded' or 'collapsed' to reveal the content associated with that item. There can be zero expanded items, or exactly one item expanded at a time.
 
-- **A Wikipedia API search widget** : It shows a text input at the top where a user can type some *term*. Then it takes the *term* entered by the user and performs a search of the **Wikipedia API** and shows a list of results below. The list consists of the title of the article searched for and a brief description of the article following it.
+- **A Wikipedia API search widget** : It shows a text input at the top where a user can type some *term*. Then it takes the *term* entered by the user and performs a search of the **Wikipedia API** and shows a list of results below. The list consists of the title of the article searched for and a brief description of the article following it. The user can also navigate to the Wikipedia page by clicking on the article's title. 
 
 - **A Dropdown item selection widget** : It's overall goal is to show a list of options to the user. When a user clicks on it, a menu is going to open up. For this widget, the dropdown will show a list of different color options that a user can select. Whenever user changes a color option, the corresponding text's color will immediately change to reflect it. The dropdown is reusable since the different options provided inside it can be customized. 
 
