@@ -1,39 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-/* const Convert = ({ text, language }) => {
-  // debugger;
-  const [translated, setTranslated] = useState('');
-
-  useEffect(() => {
-    const doTranslation = async () => {
-      const { data } = await axios.post('https://translation.googleapis.com/language/translate/v2', {}, {
-        params: {
-          q: text,
-          target: language.value,
-          key: 'AIzaSyCHUCmpR7cT_yDFHC98CZJy2LTms-IwDlM'
-        }
-      });
-      setTranslated(data.data.translations[0].translatedText);
-    }
-
-    const timerId = setTimeout(() => {
-      if (text) doTranslation();
-    }, 1000)
-
-    return () => {
-      clearInterval(timerId);
-    }
-  }, [text, language]);
-
-  return (
-    <div>
-      <h1 className="ui header">{translated}</h1>
-    </div>
-  );
-}
-export default Convert; */
-
 const Convert = ({ text, language }) => {
   const [translated, setTranslated] = useState('');
   const [debouncedText, setDebouncedText] = useState(text);
@@ -49,18 +16,28 @@ const Convert = ({ text, language }) => {
   }, [text])
 
   useEffect(() => {
-    const doTranslation = async () => {
-      const { data } = await axios.post('https://translation.googleapis.com/language/translate/v2', {}, {
-        params: {
-          q: debouncedText,
-          target: language.value,
-          key: 'AIzaSyCHUCmpR7cT_yDFHC98CZJy2LTms-IwDlM'
-        }
-      });
-      setTranslated(data.data.translations[0].translatedText);
-    }
+    const options = {
+      method: 'POST',
+      url: 'https://microsoft-translator-text.p.rapidapi.com/translate',
+      params: {
+        to: `${language.value}`,
+        'api-version': '3.0',
+        profanityAction: 'NoAction',
+        textType: 'plain'
+      },
+      headers: {
+        'content-type': 'application/json',
+        'x-rapidapi-key': process.env.REACT_APP_API_KEY,
+        'x-rapidapi-host': 'microsoft-translator-text.p.rapidapi.com'
+      },
+      data: [{ Text: debouncedText }]
+    };
 
-    doTranslation();
+    axios.request(options).then(response => {
+      setTranslated(response.data[0]['translations'][0].text);
+    }).catch(error => {
+      console.error(error);
+    });
   }, [language, debouncedText])
 
   return (
