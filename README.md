@@ -12,4 +12,4 @@ This is a **React** application that includes four different widgets put togethe
 
 The Widgets application also implements **navigation** built using Javascript and React. The *Header* at the top of the page will have links that a user can click on, to go and look at the different widgets on the screen. The different widgets will be shown to the user based upon the current url that they are visiting. This will enable the user to navigate between the different widget components that were built. 
 
-This App is created with ***create-react-app*** and is deployed with ***Netlify***. Click on the following link to try it. **[widgets](https://stupefied-hodgkin-a3c4e3.netlify.app/)** update
+This App is created with ***create-react-app*** and is deployed with ***Netlify***. Click on the following link to try it. **[widgets](https://stupefied-hodgkin-a3c4e3.netlify.app/)**
